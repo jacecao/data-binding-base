@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据双向绑定测试</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" june-model="test">
+		<p june-text="test"></p>
+	</div>
+	<!--
+	<script>
+		var inp = document.querySelector('input');
+		console.log(inp.attributes);
+		console.log(inp.attributes.getNamedItem('type').nodeValue);
+		// 关于nodeName 参见doc.txt 第一条
+		// 通过call调用Array中的ForEach()循环
+		Array.prototype.forEach.call(inp.attributes, function(v) {
+			console.log(v.nodeName);
+			console.log(v.nodeName.indexOf('june-'));
+			console.log(v.nodeName.slice('june-'.length));
+		});
+
+		var app = document.querySelector('#app');
+		console.log(app.childNodes);
+		console.log(app.childElementCount);
+		console.log(app.firstElementChild);
+	</script>
+	-->
+	<script src="./module/binding_module_1.js"></script>
+	<script>
+		var app = document.querySelector('#app');
+		console.log(June.prototype.module_name[0]);
+		// console.log(June.prototype.bind_nodes_by_arr(app));
+		// var nodes = June.prototype.bind_nodes_by_arr(app);
+		// June.prototype.digest(true, 0, nodes, {test: 'hello world!'});
+		/*
+			test
+		 */
+		June({
+			ele: '#app',
+			data: {test: 'hello world!'}
+		})
+	</script>
+</body>
+</html>
