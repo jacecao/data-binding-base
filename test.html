@@ -5,9 +5,15 @@
 	<title>数据双向绑定测试</title>
 </head>
 <body>
+	<h3>module_1</h3>
 	<div id="app">
 		<input type="text" june-model="test">
 		<p june-text="test"></p>
+	</div>
+	<h3>module_2</h3>
+	<div id="app_v">
+		<input type="text" v-model="test2">
+		<p v-text="test2"></p>
 	</div>
 	<!--
 	<script>
@@ -29,19 +35,31 @@
 	</script>
 	-->
 	<script src="./module/binding_module_1.js"></script>
+	<script src="./module/binding_module_2.js"></script>
 	<script>
 		var app = document.querySelector('#app');
-		console.log(June.prototype.module_name[0]);
+		var app_v = document.querySelector('#app_v');
+		/*
+			binding_module_1_test
+		 */
+		// console.log(June.prototype.module_name[0]);
 		// console.log(June.prototype.bind_nodes_by_arr(app));
 		// var nodes = June.prototype.bind_nodes_by_arr(app);
 		// June.prototype.digest(true, 0, nodes, {test: 'hello world!'});
-		/*
-			test
-		 */
 		June({
 			ele: '#app',
 			data: {test: 'hello world!'}
 		})
+		/*
+			binding_module_2_test
+		 */
+		console.log(V.prototype.module_name[0]);
+		console.log(V.prototype.get_nodes_by_arr(app_v));
+		var _v = V({
+			ele: '#app_v',
+			data: {test2: 'hey june!'}
+		});
+		console.log(_v.nodes);
 	</script>
 </body>
 </html>

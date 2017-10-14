@@ -2,12 +2,31 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>数据双向绑定测试</title>
+	<title>数据双向绑定</title>
 </head>
 <body>
-	<div class="app">
-		<input type="text" june-model="test">
-		<p june-text="test"></p>
+	<h3>module_1</h3>
+	<div id="app">
+		<input type="text" june-model="demo">
+		<p june-text="demo"></p>
 	</div>
+	<h3>module_2</h3>
+	<div id="app_2">
+		<input type="text" v-model="test">
+		<p v-text="test"></p>
+	</div>
+
+	<script src="./module/binding_module_1.js"></script>
+	<script src="./module/binding_module_2.js"></script>
+	<script>
+		June({
+			ele: '#app',
+			data: {demo: 'hello world!'}
+		});
+		V({
+			ele: '#app_2',
+			data: {test: 'hello june!'}
+		});
+	</script>
 </body>
 </html>

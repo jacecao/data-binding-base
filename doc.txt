@@ -9,24 +9,28 @@ NodeList 对象的 独特之处在于，它实际上是基于 DOM 结构动态�
 
 [HTMLCollection]
 var images = document.getElementsByTagName("img");
-这行代码会将一个 HTMLCollection 对象保存在 images 变量中。
+这行代码会将一个 HTMLCollection对象保存在images变量中。
 与 NodeList 对象类似可以使用方括号语法或item()方法
 来访问HTMLCollection对象中的项。
 而这个对象中元素的数量则可以通过其length属性取得，如下面的例子所示。
  alert(images.length);
-alert(images[0].src);
-alert(images.item(0).src);
-HTMLCollection 对象还有一个方法，叫做 namedItem()，使用这个方法可以通过元素的 name 特性取得集合中的项。例如，假设上面提到的页面中包含如下<img>元素:
+ alert(images[0].src);
+ alert(images.item(0).src);
+
+HTMLCollection对象还有一个方法叫做 namedItem()，
+使用这个方法可以通过元素的 name 特性取得集合中的项。
+例如，假设上面提到的页面中包含如下<img>元素:
     <img src="myimage.gif" name="myImage">
 那么就可以通过如下方式从 images 变量中取得这个<img>元素:
     var myImage = images.namedItem("myImage");
-  在提供按索引访问项的基础上，HTMLCollection 还支持按名称访问项，
+  在提供按索引访问项的基础上，HTMLCollection还支持按名称访问项，
   这就为我们取得实际想要的元素提供了便利。
   而且，对命名的项也可以使用方括号语法来访问，如下所示:
  var myImage = images["myImage"]
 
 
 【nodeName || nodeValue(针对属性节点才有该值，元素节点为空)】
+
   nodeName 通常我们常见是的返回属性节点名称，如test文件中的第一个  
   console.log(inp.nodeName);   
   其实针对当前不同的对象，nodeName会返回不一样的值
@@ -52,4 +56,12 @@ HTMLCollection 对象还有一个方法，叫做 namedItem()，使用这个方�
   removeNamedItem(name): 移除指定属性节点
   setNamedItem(node): 添加属性节点
   item(pos): 返回位于数字pos位置处的节点
-  目前更加常用的是：getAttribute()、removeAttribute()和 setAttribute()方法 
+  目前更加常用的是：getAttribute()、removeAttribute()和 setAttribute()方法
+
+
+  【元素遍历重要的API】
+  childElementCount:返回子元素(不包括文本节点和注释)的个数。  
+  firstElementChild:指向第一个子元素;firstChild 的元素版。
+  lastElementChild:指向最后一个子元素;lastChild 的元素版。
+  previousElementSibling:指向前一个同辈元素;previousSibling 的元素版。
+  nextElementSibling:指向后一个同辈元素;nextSibling 的元素版
