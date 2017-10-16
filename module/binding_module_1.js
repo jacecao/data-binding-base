@@ -139,6 +139,9 @@
 	// 既然要作为June的替身，有一个非常重要的地方就是继承June的原型链
 	// 所以还需要这样做（当前这个小列子里其实不做这一步也没有关系，但是一个完整的模型体系必须这样）
 	// 保证原型链的清晰和功能完备
+	// 这里说白了在ini原型链中添加bind_nodes_by_arr()和push_data()方法
+	// 
+	// 尝试这里不添加这项，代码会运行成功吗？TRY！！！
 	June.prototype.init.prototype = June.prototype;
     
     // 这里将June作为一个封装函数挂到window上
