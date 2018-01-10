@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM操作</title>
+</head>
+<body>
+	<h3>DOM操作</h3>
+	<p class="len" name="test"></p>
+	<div>
+		<button type="button" class="list">NodeList</button>
+		<button type="button" class="collection" name="lol2">HTMLCollection</button>
+		<button type="button" class="map" name="map">NamedNodeMap</button>
+		<button type="button" class="add">增加元素到body</button>
+	</div>
+	<div class="message"></div>
+	<script>
+		var list = document.querySelector('.list');
+		var collection = document.querySelector('.collection');
+		var map = document.querySelector('.map');
+		var add = document.querySelector('.add');
+
+		var len = document.querySelector('.len');
+		var mes = document.querySelector('.message');
+
+		var childs = document.querySelector('body').childNodes;
+		console.log(childs);
+
+		var _len_info = '';
+
+		var html = '';
+
+		_len_info = 'body中的子元素:';
+		for (var i = 0; i < childs.length; i++) {
+			html += '<p>' + (i + 1) + '---' + childs[i].nodeName + '</p>';
+		}
+		len.innerHTML = _len_info + html;
+
+		// setTimeout(function(){
+		// 	_len_info = 'body中的子元素:';
+		// 	for (var i = 0; i < childs.length; i++) {
+		// 		html += '<p>' + (i + 1) + '---' + childs[i].nodeName + '</p>';
+		// 	}
+		// 	len.innerHTML = _len_info + html;
+		// }, 0);
+
+		list.addEventListener('click', function () {
+			mes.innerHTML = '';
+			html = 'body中的有'+ childs.length +'个子元素:';
+			for (var i = 0; i < childs.length; i++) {
+				html += '<p>' + (i + 1) + '---' + childs[i].nodeName + '</p>';
+			}
+			mes.innerHTML = html;
+		}, false);
+
+		collection.addEventListener('click', function () {
+			
+		}, false);
+
+		map.addEventListener('click', function () {
+			
+		}, false);
+
+		add.addEventListener('click', function () {
+			var p = document.createElement('p');
+			p.innerHTML = 'add element';
+			document.querySelector('body').appendChild(p);
+
+			html = '';
+
+			for (var i = 0; i < childs.length; i++) {
+				html += '<p>' + (i + 1) + '---' + childs[i].nodeName + '</p>';
+			}
+			len.innerHTML = _len_info + html;
+		}, false);
+	</script>
+</body>
+</html>
