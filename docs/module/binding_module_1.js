@@ -92,29 +92,27 @@
 			// 这里的nodes都是具有指定module_name属性的元素
 			nodes.forEach(function (node) {
 				Array.prototype.forEach.call(node.attributes, function (node_attr) {
-					if (node_attr.nodeName.indexOf(_m_name) >= 0) {
-						switch (node_attr.nodeName.slice(_m_name.length)) {
-							case 'model':
-								if (bool) {
-									// 当bool为true时，将当前元素也就是node的value
-									// 设置为数据data对象中相应属性名的值
-									// 什么意思呢？
-									// 举例说明 node: <input class="test" june-model="test">
-									// data {test: 'hello'}, 这里的操作就是将hello赋值给input.value
-									node.value = data[node_attr.nodeValue] || '';
-								} else if (node.value !== data[node_attr.nodeValue]) {
-									data[node_attr.nodeValue] = node.value || '';
-								}
-								break;
-							case 'text':
-								if (node.innerText !== data[node_attr.nodeValue]) {
-									node.innerText = data[node_attr.nodeValue];
-								}
-								break;
-							default:
-								console.info('please check the node contain june-model or june-text attribute');
-								break;	
-						}
+					switch (node_attr.nodeName.slice(_m_name.length)) {
+						case 'model':
+							if (bool) {
+								// 当bool为true时，将当前元素也就是node的value
+								// 设置为数据data对象中相应属性名的值
+								// 什么意思呢？
+								// 举例说明 node: <input class="test" june-model="test">
+								// data {test: 'hello'}, 这里的操作就是将hello赋值给input.value
+								node.value = data[node_attr.nodeValue] || '';
+							} else if (node.value !== data[node_attr.nodeValue]) {
+								data[node_attr.nodeValue] = node.value || '';
+							}
+							break;
+						case 'text':
+							if (node.innerText !== data[node_attr.nodeValue]) {
+								node.innerText = data[node_attr.nodeValue];
+							}
+							break;
+						default:
+							console.info('please check the node contain june-model or june-text attribute');
+							break;	
 					}
 				});
 			});
