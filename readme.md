@@ -5,13 +5,13 @@
 [2.项目简介](#_2)
 
 [2.涉及要点](#_3)
-  &nbsp; [2.1 DOM操作](#_21)
-    &nbsp; &nbsp; [2.1-1 NodeList](#_211)
-    &nbsp; &nbsp; [2.1-2 HTMLCollection](#_212)
-    &nbsp; &nbsp; [2.1-3 NodeName-NodeValue](#_213)
-    &nbsp; &nbsp; [2.1-4 attributes-NameNodeMap](#_214)
-    &nbsp; &nbsp; [2.1-5 元素遍历](#_215)  
-  &nbsp; [2.2 数据绑定](#_22) 
+  &nbsp; [2.1 DOM操作](#_21)    
+    &nbsp; &nbsp; [2.1-1 NodeList](#_211)    
+    &nbsp; &nbsp; [2.1-2 HTMLCollection](#_212)    
+    &nbsp; &nbsp; [2.1-3 NodeName-NodeValue](#_213)      
+    &nbsp; &nbsp; [2.1-4 attributes-NameNodeMap](#_214)     
+    &nbsp; &nbsp; [2.1-5 元素遍历](#_215)     
+  &nbsp; [2.2 数据绑定](#_22)   
 
 [演示地址](https://jacecao.github.io/data-binding-base/)
 
@@ -39,7 +39,7 @@
 
 <h4 id="_3">涉及要点</h4> 
 
-1. <h4 id="_21">DOM操作（请参考[演示](https://jacecao.github.io/data-binding-base/dom/)）</h4>
+1. <h4 id="_21">DOM操作-[演示](https://jacecao.github.io/data-binding-base/dom/)</h4>
 
 要实现数据绑定，面临的第一个问题就是对DOM操作，需要识别页面那些元素需要绑定数据，例如`<p v-text="test"></p>`这样的页面结构,我们需要识别带有特定属性（‘v-text’）的HTML元素.
 
@@ -71,7 +71,7 @@ HTMLCollection又是啥呢？这两个对象却非常容易搞混为什么这样
     // 你会发现 p和_p 返回的内容基本一样，处理p显示的是NodeList, _p显示的是HTMLCollection
 ```
 
-这里我们就会认为这个NodeList和HTMLCollection没啥区别啊，其实可以将Nodelist理解为HTMLCollection的阉割对象，即NodeList能做的HTMLCollection也能做，HTMLCollection能做的NodeList就不一定能做了，比如HTMLCollection对象有‘name’属性，而NodeList对象却没有，HTMLCollection这个'name'属性有什么用呢？其实针对这个属性该对象还有一个方namedItem(),这个两个方法的作用都是返回属性name为指定值得HTML元素.
+这里我们就会认为这个NodeList和HTMLCollection没啥区别啊，其实可以将Nodelist理解为HTMLCollection的阉割对象，即NodeList能做的HTMLCollection也能做，HTMLCollection能做的NodeList就不一定能做了，比如HTMLCollection对象有‘name’属性，而NodeList对象却没有，HTMLCollection这个'name'属性有什么用呢？其实针对这个属性该对象还有一个方namedItem(),这个两个方法的作用都是返回属性name为指定值的HTML元素.
 
 
 ``` javascript
@@ -139,6 +139,8 @@ document.queryXXXXX,这类方法返回的都是NodeList
   });
 ```
 
+通过上面的代码是不是发现NodeName和NodeValue将在实现数据绑定中发挥很大的作用呢？
+
 <h5 id="_215">1.5 元素遍历</h5>
 
 如DOM演示里显示的那样，我们获取到的元素包括了文本节点（甚至有注释节点），那么这些对我们遍历很不友好，有没有可以跳过这些节点遍历的方法呢？ 当然有啦。
@@ -166,8 +168,8 @@ nextElementSibling: 指向后一个同辈元素
 
 <h4 id="_22">2. 数据绑定</h4>
 
-目前有2种方法实现数据绑定：
-  一种是通过事件绑定来实时绑定数据，即以事件驱动数据更新。   
+目前有2种方法实现数据绑定：    
+  一种是通过事件绑定来实时绑定数据，即以事件驱动数据更新。    
   一种是通过自定义对象取值和设值的方法来驱动数据更新。   
 目前大家都广泛使用第二种。
 
