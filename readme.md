@@ -1,10 +1,8 @@
 ## 原生JavaScript实现数据双向绑定
 
-[1.文档结构](#_1)
-
-[2.项目简介](#_2)
-
-[2.涉及要点](#_3)
+[1.文档结构](#_1)          
+[2.项目简介](#_2)     
+[2.涉及要点](#_3)    
   &nbsp; [2.1 DOM操作](#_21)    
     &nbsp; &nbsp; [2.1-1 NodeList](#_211)    
     &nbsp; &nbsp; [2.1-2 HTMLCollection](#_212)    
@@ -37,9 +35,9 @@
 
 ##
 
-<h4 id="_3">涉及要点</h4> 
+<h4 id="_3">2 涉及要点</h4> 
 
-1. <h4 id="_21">DOM操作-[演示](https://jacecao.github.io/data-binding-base/dom/)</h4>
+<h4 id="_21">2.1 DOM操作</h4> [演示](https://jacecao.github.io/data-binding-base/dom/)
 
 要实现数据绑定，面临的第一个问题就是对DOM操作，需要识别页面那些元素需要绑定数据，例如`<p v-text="test"></p>`这样的页面结构,我们需要识别带有特定属性（‘v-text’）的HTML元素.
 
@@ -47,7 +45,7 @@
 
 上面都是HTML节点的对象，这些对象都是实时动态的，也就是说每当文档结构发生变化时，它们都会得到更新。因此它们始终都会保存着最新最准确的信息。
 
-<h5 id="_211">1.1 NodeList</h5>
+<h4 id="_211">1.1 NodeList</h4>
 
 每个节点都有一个childNodes属性，那这个属性的值究竟是什么呢？其实这个属性是一个非常非常重要的属性，包含了当前节点下所有子节点的信息(注意只是子节点，不包含孙节点)的一个对象。这个对象就是NodeList，它是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点的信息。
 
@@ -60,7 +58,7 @@ NodeList对象的独特之处在于，它实际上是基于DOM结构动态执行
   为什么这样就可以了呢（而且还是0毫秒就执行），这个就是我们上面提到的执行顺序问题。
 
 
-<h5 id="_212">1.2 HTMLCollection</h5>
+<h4 id="_212">1.2 HTMLCollection</h4>
 
 HTMLCollection又是啥呢？这两个对象却非常容易搞混为什么这样说呢？
 我们看一个例子： 
@@ -90,7 +88,7 @@ document.queryXXXXX,这类方法返回的都是NodeList
 
 而所有元素的ChildNodes返回的都是NodeList。
 
-<h5 id="_213">1.3 NodeName和NodeValue</h5>
+<h4 id="_213">1.3 NodeName和NodeValue</h4>
 
 我相信大家都知道nodeName这个属性可以获取当前节点的名称，但大家肯定对NodeValue就比较陌生了，因为正常的节点nodeValue值为null，根本没啥用，但既然没用为什么要设置这个属性呢？
 
@@ -109,7 +107,7 @@ document.queryXXXXX,这类方法返回的都是NodeList
 
 那这和nodeList/nodeValue有什么关系呢？别急让我们娓娓道来。
 
-<h5 id="_214">1.4 attributes 和 NameNodeMap</h5>
+<h4 id="_214">1.4 attributes 和 NameNodeMap</h4>
 
 前面我们知道通过节点的childNodes属性获取NodeList，那我们如何获取属性节点的NameNodeMap呢？那就得使用`attributes`。文档元素中的attributes属性中包含一个NameNodeMap对象,与NodeList一样也是一个动态的集合，每个节点的属性都保存在NameNodeMap对象中，该对象拥有以下方法：
 
@@ -141,7 +139,7 @@ document.queryXXXXX,这类方法返回的都是NodeList
 
 通过上面的代码是不是发现NodeName和NodeValue将在实现数据绑定中发挥很大的作用呢？
 
-<h5 id="_215">1.5 元素遍历</h5>
+<h4 id="_215">1.5 元素遍历</h4>
 
 如DOM演示里显示的那样，我们获取到的元素包括了文本节点（甚至有注释节点），那么这些对我们遍历很不友好，有没有可以跳过这些节点遍历的方法呢？ 当然有啦。
 
