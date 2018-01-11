@@ -37,7 +37,9 @@
 
 <h4 id="_3">2 涉及要点</h4> 
 
-<h4 id="_21">2.1 DOM操作</h4> [演示](https://jacecao.github.io/data-binding-base/dom/)
+<h4 id="_21">2.1 DOM操作</h4>    
+
+[演示](https://jacecao.github.io/data-binding-base/dom/)   
 
 要实现数据绑定，面临的第一个问题就是对DOM操作，需要识别页面那些元素需要绑定数据，例如`<p v-text="test"></p>`这样的页面结构,我们需要识别带有特定属性（‘v-text’）的HTML元素.
 
